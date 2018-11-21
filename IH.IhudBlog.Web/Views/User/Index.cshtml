@@ -1,0 +1,45 @@
+﻿@using IH.IhudBlog.Web.Models;
+@model List<UserViewModel>
+
+@section styles
+
+{
+    <style>
+        .superclass:hover {
+            background-color: #00ff90;
+            cursor: pointer
+        }
+    </style>
+}
+
+    <h2>Пользователи</h2>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            @foreach (var item in Model)
+            {
+            <div class="superclass">
+
+                @item.Id
+
+                @item.Login
+
+
+
+
+            </div>
+            }
+        </div>
+
+
+
+
+        <div class="col-md-8">
+            @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
+        </div>
+    </div>
+</div>

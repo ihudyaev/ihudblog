@@ -1,0 +1,98 @@
+﻿@using IH.IhudBlog.Web.Models;
+@using IH.IhudBlog.Web.Extensions
+@model List<NoteViewModel>
+@{
+    Layout = null;
+}
+
+
+
+<h2>Заметки</h2>
+
+
+<div class="container-fluid">
+
+    <div>
+        @*<input type="button" value="Add Note" onclick=@Url.Action("EditNote","Note") class="btn btn-default" />*@
+        @Html.ActionLink("Создать заметку", "CreateNote")
+    </div>
+    <div class="row">
+
+        <div class="col-md-5">
+            @foreach (var item in Model)
+            {
+                <div data-noteid="@item.Id">
+                    <div class="superclass note-list-item" data-noteid="@item.Id">
+                        @item.ShortTitle.ToString()
+                        @if (item.IsDraft)
+                        {
+                            <span class="text-success">(Черновик)</span>
+                        }
+                        <br />
+                        @item.User.Login
+
+
+                        <br />
+                        @foreach (var tag in item.Tags)
+                        {
+                            <span>
+                                #@tag
+                            </span>
+                        }
+                    </div>
+                    @*@Html.ActionLink("Edit", "EditNote", new { @class = "MyClass", @data-noteid = item.Id })*@
+                    @Html.ActionLink("Delete", "EditNote")
+                </div>
+                <div>
+
+                </div>
+            }
+        </div>
+
+
+
+
+        <div class="col-md-7">
+            <div class="show-text-part-view">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+
+    <script>
+        $('.note-list-item').click(function () {
+            var Id = this.dataset.noteid;
+    $.ajax({
+
+        url: '@Url.Action("ShowNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+        @*    $('.note-list-item').click(function () {
+            var Id = this.dataset.noteid;
+    $.ajax({
+
+        url: '@Url.Action("ShowNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;*@
+
+    </script>
+
+
+}

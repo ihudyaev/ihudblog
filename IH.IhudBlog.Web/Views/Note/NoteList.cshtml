@@ -1,0 +1,125 @@
+﻿@model IEnumerable<IH.IhudBlog.Web.Models.NoteListModel>
+
+@{
+    Layout = null;
+}
+
+@section styles
+{
+    <style>
+        .superclass:hover {
+            background-color: #00ff90;
+            cursor: pointer
+        }
+
+        .highlighted {
+            background-color: #ffd800;
+        }
+    </style>
+
+}
+<div class="container-fluid">
+
+    <div>
+        @*<input type="button" value="Add Note" onclick=@Url.Action("EditNote","Note") class="btn btn-default" />*@
+        @Html.ActionLink("Создать заметку", "CreateNote")
+    </div>
+    <div class="row">
+
+        <div class="col-md-5">
+            @foreach (var item in Model)
+            {
+                <div data-noteid="@item.Id" class="border-bottom border-danger">
+                    <div class="superclass note-list-item" data-noteid="@item.Id">
+                        @item.ShortTitle.ToString()
+                        @if (item.IsDraft)
+                        {
+                            <span class="text-success">(Черновик)</span>
+                        }
+                        <br />
+                        @item.UserName
+
+
+                        <br />
+                        @foreach (var tag in item.Tags)
+                        {
+                            <span>
+                                #@tag
+                            </span>
+                        }
+                    </div>
+                    <div class="edit-note" data-noteid="@item.Id">Редактировать</div>
+                    <div class="delete-note" data-noteid="@item.Id">Удалить</div>
+                </div>
+                <div>
+
+                </div>
+            }
+        </div>
+
+
+
+
+        <div class="col-md-7">
+            <div class="show-text-part-view">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+
+    <script>
+        $('.note-list-item').click(function () {
+            var Id = this.dataset.noteid;
+            $('.note-list-item').removeClass("highlighted");
+            $(this).addClass("highlighted");
+
+    $.ajax({
+
+        url: '@Url.Action("ShowNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+
+        $('.edit-note').click(function () {
+            var Id = this.dataset.noteid;
+
+    $.ajax({
+        url: '@Url.Action("EditNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+
+        $('.delete-note').click(function () {
+            var Id = this.dataset.noteid;
+    $.ajax({
+        url: '@Url.Action("DeleteNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+
+    </script>
+    }

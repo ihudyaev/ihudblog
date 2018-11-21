@@ -1,0 +1,157 @@
+﻿@model IEnumerable<IH.IhudBlog.Web.Models.NoteListModel>
+
+<p>
+    @* Сделаем во всю ширину, чтобы легче было попасть *@
+    <div class="create-note superclass"> Создать заметку </div>
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<div class="col-md-6">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Заголовок", "Index", new { sortOrder = ViewBag.TitleSortParam })
+            </th>
+            <th>
+                @Html.ActionLink("Имя пользователя", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Черновик", "Index", new { sortOrder = ViewBag.DraftSortParam })
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Tags)
+            </th>
+            <th>
+                @Html.ActionLink("Время изменения", "Index", new { sortOrder = ViewBag.DateSortParm })
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {      
+        <tr class="superclass note-list-item" data-noteid="@item.Id">
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortTitle)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.UserName)
+
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.IsDraft)
+
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Tags)
+
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.ChangeTime)
+
+            </td>
+
+            <td>
+                @if (item.Owner)
+                {
+                    <div class="edit-note " data-noteid="@item.Id" >Редактировать</div>
+                    <div class="delete-note " data-noteid="@item.Id">Удалить</div>
+                }
+
+            </td>
+        </tr>
+}
+        
+        </table>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="show-text-part-view">
+
+            </div>
+        </div>
+
+
+
+        @section scripts
+{
+
+            <script>
+
+        $('.note-list-item').click(function () {
+            var Id = this.dataset.noteid;
+            $('.note-list-item').removeClass("highlighted");
+            $(this).addClass("highlighted");
+
+    $.ajax({
+
+        url: '@Url.Action("ShowNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+
+        $('.edit-note').click(function () {
+            var Id = this.dataset.noteid;
+
+    $.ajax({
+        url: '@Url.Action("EditNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+
+        $('.delete-note').click(function () {
+            var Id = this.dataset.noteid;
+    $.ajax({
+        url: '@Url.Action("DeleteNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+    $('.create-note').click(function () {
+    var Id = this.dataset.noteid;
+    $.ajax({
+        url: '@Url.Action("EditNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: -1 },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+                }).replaceAll;
+
+
+              
+
+            </script>
+
+
+        }

@@ -1,0 +1,27 @@
+571FC7B3.key
+ Kaspersky Security Center
+
+571FC7B4.key
+ Kaspersky Anti-Virus for Linux Workstation
+ Kaspersky Anti-Virus for Windows File Servers
+ Kaspersky Anti-Virus for Windows Workstations
+ Kaspersky Anti-Virus for Novell NetWare
+ Kaspersky Anti-Virus for Linux File Server
+ Kaspersky Anti-Virus for Samba Servers
+ Kaspersky Endpoint Security for Linux Workstation
+ Kaspersky Endpoint Security for Mac
+ Kaspersky Endpoint Security 8 for Windows (Workstations component)
+ Kaspersky Endpoint Security 8 for Windows (Servers component)
+ Kaspersky Endpoint Security 10 for Windows (Servers component)
+ Kaspersky Endpoint Security 10 for Windows (Workstations component)
+ Kaspersky Endpoint Security for Smartphone
+ Kaspersky Security for Mobile
+ Kaspersky Anti-Virus 5 for Windows Workstations
+ Kaspersky Anti-Virus for Windows Workstation for R-Style
+ Kaspersky Anti-Virus for Windows Workstation for Aquarius
+ Kaspersky Anti-Virus for Windows Workstation for DEPO
+ Kaspersky Endpoint Security 10 for Mac
+ Kaspersky SafeBrowser for iOS
+ Kaspersky SafeBrowser for WinPhone
+ Kaspersky Endpoint Security 10 for Linux
+ Kaspersky Security 10 for Windows Server

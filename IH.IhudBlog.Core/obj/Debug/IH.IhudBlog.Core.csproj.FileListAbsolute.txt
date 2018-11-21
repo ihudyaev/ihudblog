@@ -1,0 +1,71 @@
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.dll
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.pdb
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csprojAssemblyReference.cache
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CoreCompileInputs.cache
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.dll
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.pdb
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.dll
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.dll
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.dll
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.dll
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.dll
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.xml
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.xml
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.xml
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.xml
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.xml
+C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CopyComplete
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.dll
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.pdb
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.dll
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.dll
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.dll
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.dll
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.dll
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.xml
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.xml
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.xml
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.xml
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.xml
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csprojAssemblyReference.cache
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CoreCompileInputs.cache
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CopyComplete
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.dll
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.pdb
+D:\GIT\ihud\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\hibernate.cfg.xml
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\hibernate.cfg.xml
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.dll
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.pdb
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.dll
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.dll
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.dll
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.dll
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.dll
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.xml
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.xml
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.xml
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.xml
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.xml
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csprojAssemblyReference.cache
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CoreCompileInputs.cache
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CopyComplete
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.dll
+D:\Documents\Visual Studio 2017\Projects\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.pdb
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\hibernate.cfg.xml
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.dll
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\IH.IhudBlog.Core.pdb
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.dll
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.dll
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.dll
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.dll
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.dll
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Antlr3.Runtime.xml
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Iesi.Collections.xml
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\NHibernate.xml
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.xml
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\bin\Debug\Remotion.Linq.EagerFetching.xml
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csprojAssemblyReference.cache
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CoreCompileInputs.cache
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.csproj.CopyComplete
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.dll
+C:\Users\ihud\Music\IH.IhudBlog.Core\IH.IhudBlog.Core\obj\Debug\IH.IhudBlog.Core.pdb

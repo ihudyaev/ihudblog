@@ -1,0 +1,33 @@
+﻿@model IH.IhudBlog.Web.Models.NoteViewModel
+
+@{
+    Layout = null;
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.Hidden("Id")
+    @Html.Hidden("CreationTime")
+    @Html.Hidden("ChangeTime")
+    @Html.Hidden("UserId")
+    @Html.Hidden("Title")
+    @Html.Hidden("IsDraft")
+    @Html.Hidden("Text")
+    @Html.Hidden("Tags")
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Удалить" class="btn btn-default apply-button" />
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+    <property name="connection.connection_string">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ihud\source\repos\IH.IhudBlog.Core\IH.IhudBlog.Web\App_Data\IhudBlogDB.mdf;Integrated Security=True</property>
+    
+    <property name="show_sql">true</property>
+    <mapping assembly="IH.IhudBlog.Core" />
+  </session-factory>
+</hibernate-configuration>

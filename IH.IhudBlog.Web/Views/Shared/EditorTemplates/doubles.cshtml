@@ -1,0 +1,13 @@
+﻿@model  double[]
+
+@if (Model == null)
+{
+    <input type="number" name="@Html.NameForModel()" class="form-control" />
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <input type="number" name="@Html.NameForModel()" value="@item" class="form-control" />
+    }
+}
