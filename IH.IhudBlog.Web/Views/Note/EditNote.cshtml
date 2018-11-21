@@ -10,7 +10,7 @@
 @using (Html.BeginForm("EditNote", "Note", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
+}
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -60,7 +60,7 @@
     <div>
         @if (Model.Files != null)
         {
-            @foreach (var file in Model.Files)
+            foreach (var file in Model.Files)
             {
                 <div>@file.FileN</div>
 
@@ -80,4 +80,3 @@
         </div>
     </div>
 </div>
-}

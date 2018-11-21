@@ -2,13 +2,13 @@
 
 <p>
     @* Сделаем во всю ширину, чтобы легче было попасть *@
-    <div class="create-note superclass"> Создать заметку </div>
+    <div class="create-note superclass btn btn-default"> Создать заметку </div>
 </p>
 @using (Html.BeginForm())
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
+        @Html.TextBox("SearchString")
+        <input class="superclass btn btn-sm" type="submit" value="Поиск" />
     </p>
 }
 <div class="col-md-6">
@@ -34,60 +34,63 @@
         </tr>
 
         @foreach (var item in Model)
-        {      
-        <tr class="superclass note-list-item" data-noteid="@item.Id">
+        {
+            <tr class="superclass note-list-item" data-noteid="@item.Id">
 
-            <td>
-                @Html.DisplayFor(modelItem => item.ShortTitle)
-            </td>
-            <td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortTitle)
+                </td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.UserName)
+                    @Html.DisplayFor(modelItem => item.UserName)
 
-            </td>
-            <td>
+                </td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.IsDraft)
+                    @Html.DisplayFor(modelItem => item.IsDraft)
 
-            </td>
-            <td>
+                </td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.Tags)
+                    @Html.DisplayFor(modelItem => item.Tags)
 
-            </td>
-            <td>
+                </td>
+                <td>
 
-                @Html.DisplayFor(modelItem => item.ChangeTime)
+                    @Html.DisplayFor(modelItem => item.ChangeTime)
 
-            </td>
+                </td>
 
-            <td>
-                @if (item.Owner)
-                {
-                    <div class="edit-note " data-noteid="@item.Id" >Редактировать</div>
-                    <div class="delete-note " data-noteid="@item.Id">Удалить</div>
-                }
+                <td>
+                    @if (item.Owner)
+                    {
+                        <img src="/banners/edit.gif" alt="Editable" />
+                    }
+                    else
+                    {
+                        <img src="~/banners/preview.gif" alt="View" />
+                    }
 
-            </td>
-        </tr>
-}
-        
-        </table>
+                </td>
+            </tr>
+        }
 
-        </div>
+    </table>
 
-        <div class="col-md-6">
-            <div class="show-text-part-view">
+</div>
 
-            </div>
-        </div>
+<div class="col-md-6">
+    <div class="show-text-part-view">
+
+    </div>
+</div>
 
 
 
-        @section scripts
+@section scripts
 {
 
-            <script>
+    <script>
 
         $('.note-list-item').click(function () {
             var Id = this.dataset.noteid;
@@ -107,34 +110,6 @@
         }).replaceAll;
 
 
-        $('.edit-note').click(function () {
-            var Id = this.dataset.noteid;
-
-    $.ajax({
-        url: '@Url.Action("EditNote", "Note")',
-        type:"GET",
-        dataType:  "html",
-        data: { noteid: Id },
-        success: function (data) {
-            $('.show-text-part-view').html(data);
-        },
-            });
-        }).replaceAll;
-
-
-        $('.delete-note').click(function () {
-            var Id = this.dataset.noteid;
-    $.ajax({
-        url: '@Url.Action("DeleteNote", "Note")',
-        type:"GET",
-        dataType:  "html",
-        data: { noteid: Id },
-        success: function (data) {
-            $('.show-text-part-view').html(data);
-        },
-            });
-        }).replaceAll;
-
     $('.create-note').click(function () {
     var Id = this.dataset.noteid;
     $.ajax({
@@ -149,9 +124,6 @@
                 }).replaceAll;
 
 
-              
-
-            </script>
 
 
-        }
+    </script>        }

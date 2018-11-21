@@ -73,7 +73,7 @@ namespace IH.IhudBlog.Web.Models
         [Display(Name = "Файлы")]
         public List<File> Files { get; set; }
         /// <summary>
-        /// Время создания
+        /// Пользователь - владелец
         /// </summary>
         /// 
         [Display(Name = "Пользователь")]

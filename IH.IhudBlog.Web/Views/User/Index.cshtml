@@ -1,16 +1,7 @@
 ﻿@using IH.IhudBlog.Web.Models;
 @model List<UserViewModel>
 
-@section styles
 
-{
-    <style>
-        .superclass:hover {
-            background-color: #00ff90;
-            cursor: pointer
-        }
-    </style>
-}
 
     <h2>Пользователи</h2>
 
@@ -18,28 +9,39 @@
 <div class="container-fluid">
 
     <div class="row">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.ActionLink("Логин", "Index", new { sortOrder = ViewBag.TitleSortParam })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Дата Рождения", "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Почта", "Index", new { sortOrder = ViewBag.DraftSortParam })
+                    </th>
+                    <th></th>
+                </tr>
 
-        <div class="col-md-4">
-            @foreach (var item in Model)
-            {
-            <div class="superclass">
+                @foreach (var item in Model)
+                {
+                    <tr class="superclass note-list-item" data-noteid="@item.Id">
 
-                @item.Id
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Login)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Birthday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                    </tr>
+                }
 
-                @item.Login
+            </table>
 
-
-
-
-            </div>
-            }
         </div>
 
 
-
-
-        <div class="col-md-8">
-            @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>*@
-        </div>
     </div>
-</div>

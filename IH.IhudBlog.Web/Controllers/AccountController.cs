@@ -39,7 +39,7 @@ namespace IH.IhudBlog.Web.Controllers
 
             var user = UserRepository.LoadByName(model.Login);
 
-            if (user == null || user.Password != model.Password)
+            if (user == null || user.Password != UserViewModel.GetHash(model.Password))
             {
                 ModelState.AddModelError("", "Неверный логин или пароль");
                 return View(model);

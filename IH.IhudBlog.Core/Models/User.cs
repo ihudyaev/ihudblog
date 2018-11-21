@@ -18,6 +18,12 @@ namespace IH.IhudBlog.Core.Models
         /// 1-Active,2-Blocked,3-Deleted
         /// </summary>
         public virtual int UserStatus { get; set; }
+
+
+        public virtual string Email { get; set; }
+
+        public virtual DateTime Birthday { get; set; }
+
     }
 
 }

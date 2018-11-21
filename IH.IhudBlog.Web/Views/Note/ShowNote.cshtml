@@ -4,7 +4,7 @@
 }
 
 <script>
-    
+
     $('.file-item').on('click', function () {
         var FileId = this.dataset.fileid;
         var url = '/Note/DownloadFile?fileid=' + FileId;
@@ -12,23 +12,63 @@
         popup.blur();
         window.focus();
     })
-    
+
+
+        $('.edit-note').click(function () {
+            var Id = this.dataset.noteid;
+
+    $.ajax({
+        url: '@Url.Action("EditNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+
+        $('.delete-note').click(function () {
+            var Id = this.dataset.noteid;
+    $.ajax({
+        url: '@Url.Action("DeleteNote", "Note")',
+        type:"GET",
+        dataType:  "html",
+        data: { noteid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
 </script>
 
 
+
 <div>
-    <div>@Model.Title</div>
+    <h4>@Model.Title</h4>
     <hr />
     <span style="white-space: pre-line">@Model.Text</span>
 </div>
 
 
-<div>
-    @foreach (var file in Model.Files)
-    {
-        <div class="file-item superclass" data-fileid=@file.Id> @file.FileN </div>
 
+<div>
+    @if (Model.Files.Count > 0)
+    {
+        <hr />
+        foreach (var file in Model.Files)
+        {
+            <span class="file-item btn-default btn-file superclass spanblock" data-fileid=@file.Id> @file.FileN </span>
+        }
     }
 </div>
 
+<hr />
 
+@if (User.Identity.Name == Model.User.Login)
+{
+    <span class="edit-note superclass btn btn-sm " data-noteid="@Model.Id">Редактировать</span>
+    <span class="delete-note superclass btn btn-sm " data-noteid="@Model.Id">Удалить</span>
+}

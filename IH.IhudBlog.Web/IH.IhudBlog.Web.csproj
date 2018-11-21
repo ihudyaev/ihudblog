@@ -183,6 +183,8 @@
     <Content Include="App_Data\IhudBlogDB_log.ldf">
       <DependentUpon>IhudBlogDB.mdf</DependentUpon>
     </Content>
+    <Content Include="banners\edit.gif" />
+    <Content Include="banners\preview.gif" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -223,17 +225,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Note\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\Note\CreateNote2.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\doubles.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\strings.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Note\ShowNote.cshtml" />
-    <Content Include="Views\Note\ShowNoteList.cshtml" />
     <Content Include="Views\Note\EditNote.cshtml" />
     <Content Include="Views\Note\DeleteNote.cshtml" />
-    <Content Include="Views\Note\NoteList.cshtml" />
-    <Content Include="Views\Note\View.cshtml" />
-    <Content Include="Views\Note\CreateNote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

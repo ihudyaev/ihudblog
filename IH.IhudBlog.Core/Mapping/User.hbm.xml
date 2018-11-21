@@ -11,6 +11,8 @@
     <property name="Login" />
     <property name="Password" />
     <property name="UserStatus" />
+    <property name="Email" />
+    <property name="Birthday" />
 
   </class>
 

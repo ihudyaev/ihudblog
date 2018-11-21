@@ -82,46 +82,6 @@ namespace IH.IhudBlog.Web.Controllers
         }
 
 
-        //// GET: Note
-        //[HttpGet]
-        //public ActionResult CreateNote()
-        //{
-
-        //    return PartialView(new NoteViewModel());
-
-        //}
-
-
-        //// GET: Note
-        //[HttpPost]
-        //public ActionResult CreateNote(NoteViewModel model)
-        //{
-            
-        //    if (!ModelState.IsValid)
-        //    {
-        //        ModelState.AddModelError("", "Проверьте, что заполнены все поля! 😊");
-        //        return View(model);
-        //    }
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return PartialView(model);
-        //    }
-
-
-        //    Note SaveNote = new Note();
-            
-        //    SaveNote = NoteViewModel.Conversion(model);
-            
-        //    NoteRepository = new IH.IhudBlog.Core.NHibernate.NHNoteRepository();
-        //    SaveNote.Id = NoteRepository.Create().Id;
-        //    NoteRepository.Save(SaveNote);
-
-
-        //    return RedirectToAction("Index"); 
-
-        //}
-
-        // GET: Note
         [HttpGet]
         public ActionResult EditNote(long noteid)
         {
@@ -135,7 +95,9 @@ namespace IH.IhudBlog.Web.Controllers
             Note note = NoteRepository.LoadById(noteid);
             NoteViewModel model = new NoteViewModel(note);
 
-            return PartialView(model);
+            var result = PartialView(model);
+
+            return result;
             
 
         }
@@ -224,8 +186,9 @@ namespace IH.IhudBlog.Web.Controllers
             Note note = NoteRepository.LoadById(noteid);
             NoteViewModel model = new NoteViewModel(note);
             
-            return PartialView(model);
-            //return PartialView(new NoteViewModel ());
+            var result = PartialView(model);
+            return result;
+            
 
         }
 

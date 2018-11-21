@@ -43,19 +43,7 @@ namespace IH.IhudBlog.Core.NHibernate
 
             return entity;
         }
-
-        //public User LoadById(long UserId)
-        //{
-        //    var session = NHibernateHelper.GetCurrentSession();
-
-        //    var entity = session.QueryOver<User>()
-        //        .And(u => u.Id == UserId)
-        //        .SingleOrDefault();
-
-        //    NHibernateHelper.CloseSession();
-
-        //    return entity;
-        //}
+        
     }
 
 }

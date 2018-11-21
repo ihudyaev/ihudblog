@@ -26,18 +26,19 @@
 }
 
 
-    .superclass:hover {
-        background-color: #00ff90;
-        cursor: pointer
-    }
+.superclass:hover {
+    background-color: #00ff90;
+    cursor: pointer
+}
 
 
-    .highlighted {
-        background-color: #ffd800;
-    }
+.highlighted {
+    background-color: #ffd800;
+}
 
-
-
+.spanblock {
+    display:block
+}
 
 
 
