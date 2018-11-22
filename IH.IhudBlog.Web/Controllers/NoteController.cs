@@ -105,15 +105,11 @@ namespace IH.IhudBlog.Web.Controllers
 
         // GET: Note
         [HttpPost]
-        public ActionResult EditNote(NoteViewModel model, IEnumerable<HttpPostedFileBase> files)
+        public ActionResult EditNote(NoteViewModel model)//, IEnumerable<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Проверьте, что заполнены все поля! 😊");
-                return PartialView(model);
-            }
-            if (!ModelState.IsValid)
-            {
                 return PartialView(model);
             }
 
@@ -125,9 +121,15 @@ namespace IH.IhudBlog.Web.Controllers
 
             Note SaveNote = new Note();
 
-            SaveNote = NoteViewModel.Conversion(model);
-
+            
             NoteRepository = new IH.IhudBlog.Core.NHibernate.NHNoteRepository();
+
+            if(model.Id == null || model.Id == -1)
+            {
+                model.Id = NoteRepository.Create().Id;
+            }
+            
+            SaveNote = NoteViewModel.Conversion(model);
 
             NoteRepository.Save(SaveNote);
 

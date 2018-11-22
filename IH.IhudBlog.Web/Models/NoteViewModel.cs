@@ -22,7 +22,7 @@ namespace IH.IhudBlog.Web.Models
         /// </summary>
         /// 
         [Display(Name = "Заголовок статьи")]
-        [Required(ErrorMessage = "Заголовок надо заполнить для лучшего отображения статьи в списке")]
+        [Required(ErrorMessage = "Нужен заголовок")]
         public string Title { get; set; }
         /// <summary>
         /// Короткое название статьи
@@ -35,7 +35,7 @@ namespace IH.IhudBlog.Web.Models
         /// </summary>
         /// 
         [Display(Name = "Текст заметки")]
-        [Required(ErrorMessage = "Заголовок надо заполнить для лучшего отображения статьи в списке")]
+        [Required(ErrorMessage = "Нужен текст")]
         public string Text { get; set; }
         /// <summary>
         /// автор
@@ -48,7 +48,6 @@ namespace IH.IhudBlog.Web.Models
         /// </summary>
         /// 
         [Display(Name = "Черновик")]
-        [Required(ErrorMessage = "Заголовок надо заполнить для лучшего отображения статьи в списке")]
         public bool IsDraft { get; set; }
         /// <summary>
         /// Тэги
@@ -140,7 +139,9 @@ namespace IH.IhudBlog.Web.Models
                 ChangeTime = DateTime.Now,
                 CreationTime = note.CreationTime == null ? DateTime.Now : note.CreationTime,
                 NoteStatus = 1
+                
             };
+            
             return result;
         }
 

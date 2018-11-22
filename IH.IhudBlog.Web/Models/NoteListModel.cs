@@ -59,6 +59,7 @@ namespace IH.IhudBlog.Web.Models
         [Display(Name = "Владелец")]
         public bool Owner { get; set; }
 
+        
 
         public NoteListModel()
         {

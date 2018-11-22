@@ -5,78 +5,116 @@
 }
 
 
+@{Html.EnableClientValidation();}
+@{Html.EnableUnobtrusiveJavaScript();}
 
-
-@using (Html.BeginForm("EditNote", "Note", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("EditNote", "Note", FormMethod.Post, new { enctype = "multipart/form-data", id = "edit-note-id" }))
 {
     @Html.AntiForgeryToken()
-}
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    @Html.Hidden("Id")
-    @Html.Hidden("CreationTime")
-    @Html.Hidden("ChangeTime")
-    @Html.Hidden("UserId")
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @if (Model.Id == null)
+        {
+            @Html.Hidden("Id", "-1")
+        }
+        else
+        {
+            @Html.Hidden("Id")
+        }
+        @Html.Hidden("CreationTime")
+        @Html.Hidden("ChangeTime")
+        @Html.Hidden("UserId")
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", value = Model.Title } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", value = Model.Title } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsDraft, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.IsDraft)
-                @Html.ValidationMessageFor(model => model.IsDraft, "", new { @class = "text-danger", value = Model.IsDraft })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsDraft, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsDraft)
+                    @Html.ValidationMessageFor(model => model.IsDraft, "", new { @class = "text-danger", value = Model.IsDraft })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div>
+            @if (Model.Files != null)
+            {
+                foreach (var file in Model.Files)
+                {
+                    if (file != null)
+                    {
+                        <div>@file.FileN</div>
+                    }
+
+                }
+            }
+        </div>
+
+        <div>
+            @*<input type="file" id="file1" name="files" />
+                <input type="file" id="file2" name="files" />
+                <input type="file" id="file3" name="files" />*@
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Принять" class="btn btn-default apply-button" />
+                <a href="#" value="Принять" class="btn btn-default apply-button" onclick="ApplyNote()"> Принять </a>
             </div>
         </div>
     </div>
+}
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
-        </div>
-    </div>
+<script>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    function ApplyNote() {
+        
 
+        var status = $("#edit-note-id").valid();
 
-
-    <div>
-        @if (Model.Files != null)
-        {
-            foreach (var file in Model.Files)
-            {
-                <div>@file.FileN</div>
-
-            }
+        if (!status) {
+            alert("Not Valid");
+            return false;
         }
-    </div>
+        else {
+            
 
-    <div>
-        <input type="file" id="file1" name="files" />
-        <input type="file" id="file2" name="files" />
-        <input type="file" id="file3" name="files" />
-    </div>
+            var data = $("#edit-note-id").serializeArray()
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Принять" class="btn btn-default apply-button" />
-        </div>
-    </div>
-</div>
+            $.ajax({
+                url: '@Url.Action("EditNote", "Note")',
+                type: 'POST',
+                cache: false,
+                data: data,
+                success: function () { window.location.href = '/Note/Index'; }
+            });
+        }
+    }
+</script>
