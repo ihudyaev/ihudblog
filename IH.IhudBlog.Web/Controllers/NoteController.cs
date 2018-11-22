@@ -66,8 +66,8 @@ namespace IH.IhudBlog.Web.Controllers
                     all = all.OrderBy(s => s.User.Login);
                     break;
             }
-            
 
+            
 
             List<NoteListModel> model = new List<NoteListModel>();
             
@@ -122,7 +122,7 @@ namespace IH.IhudBlog.Web.Controllers
             Note SaveNote = new Note();
 
             
-            NoteRepository = new IH.IhudBlog.Core.NHibernate.NHNoteRepository();
+            
 
             if(model.Id == null || model.Id == -1)
             {
@@ -133,7 +133,18 @@ namespace IH.IhudBlog.Web.Controllers
 
             NoteRepository.Save(SaveNote);
 
-            return RedirectToAction("Index");
+            IEnumerable<Note> all = NoteRepository.GetAllValid();
+
+            List<NoteListModel> modelList = new List<NoteListModel>();
+
+
+            foreach (Note note in all)
+            {
+                modelList.Add(new NoteListModel(note));
+            }
+
+            //return RedirectToAction("Index");
+            return View("Index", modelList);
 
         }
 

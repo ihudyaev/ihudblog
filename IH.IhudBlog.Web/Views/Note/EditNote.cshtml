@@ -5,8 +5,8 @@
 }
 
 
-@{Html.EnableClientValidation();}
-@{Html.EnableUnobtrusiveJavaScript();}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
 
 @using (Html.BeginForm("EditNote", "Note", FormMethod.Post, new { enctype = "multipart/form-data", id = "edit-note-id" }))
 {
@@ -28,6 +28,7 @@
         @Html.Hidden("ChangeTime")
         @Html.Hidden("UserId")
 
+        
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -86,7 +87,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Принять" class="btn btn-default apply-button" />
-                <a href="#" value="Принять" class="btn btn-default apply-button" onclick="ApplyNote()"> Принять </a>
+                @*<a href="#" value="Принять" class="btn btn-default apply-button" onclick="ApplyNote()"> Принять </a>*@
             </div>
         </div>
     </div>
@@ -95,7 +96,7 @@
 <script>
 
     function ApplyNote() {
-        
+
 
         var status = $("#edit-note-id").valid();
 
@@ -104,7 +105,7 @@
             return false;
         }
         else {
-            
+
 
             var data = $("#edit-note-id").serializeArray()
 
