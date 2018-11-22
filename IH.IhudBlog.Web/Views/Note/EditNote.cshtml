@@ -1,4 +1,5 @@
-﻿@model IH.IhudBlog.Web.Models.NoteViewModel
+﻿
+@model IH.IhudBlog.Web.Models.NoteViewModel
 
 @{
     Layout = null;
@@ -7,6 +8,30 @@
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#remove-file-old-glyph').on('click', function () {
+            $(this).parent().remove();
+        })
+
+        $('#remove-file-glyph').on('click', function () {
+            var FileItemSelector = "div #file-item :last";
+            $(FileItemSelector).remove();
+        })
+
+        $('#add-file-glyph').on('click', function () {
+            var FileListSelector = "#files-list";
+            var FileItemSelector = "#file-item ";
+            $(FileListSelector).append('<div id=file-item > <input type="file" id="file" name="files" class="btn  btn-default"> </div>');
+            //var FilItemSelector = $(FileItemSelector).last();
+            //FilItemSelector.append('<input type="file" id="file" name="files" class="btn  btn-default">');
+        })
+    })
+</script>
+
+
+
 
 @using (Html.BeginForm("EditNote", "Note", FormMethod.Post, new { enctype = "multipart/form-data", id = "edit-note-id" }))
 {
@@ -28,7 +53,7 @@
         @Html.Hidden("ChangeTime")
         @Html.Hidden("UserId")
 
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -64,58 +89,45 @@
             </div>
         </div>
 
+        
+
         <div>
-            @if (Model.Files != null)
-            {
-                foreach (var file in Model.Files)
+            <div id="files-old-list">
+
+
+
+                @if (Model.Files != null)
                 {
-                    if (file != null)
+                    foreach (var file in Model.Files)
                     {
-                        <div>@file.FileN</div>
+                        if (file != null)
+                        {
+                            <div id="file-item-old">
+                                <input type="file" id="file" name="files" class="btn  btn-default" value=@file.FileN>
+                                <span class="glyphicon glyphicon-remove btn" id="remove-file-old-glyph" />
+                            </div>
+                        }
+
                     }
-
                 }
-            }
-        </div>
 
-        <div>
-            @*<input type="file" id="file1" name="files" />
-                <input type="file" id="file2" name="files" />
-                <input type="file" id="file3" name="files" />*@
+                <hr />
+            </div>
+            <div id="files-list">
+                
+            </div>
+            <div id="file-add-remove-button" class="spanline">
+                <span class="glyphicon glyphicon-plus btn" id="add-file-glyph" />
+                <span class="glyphicon glyphicon-remove btn" id="remove-file-glyph" />
+            </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+
                 <input type="submit" value="Принять" class="btn btn-default apply-button" />
-                @*<a href="#" value="Принять" class="btn btn-default apply-button" onclick="ApplyNote()"> Принять </a>*@
             </div>
         </div>
     </div>
 }
 
-<script>
-
-    function ApplyNote() {
-
-
-        var status = $("#edit-note-id").valid();
-
-        if (!status) {
-            alert("Not Valid");
-            return false;
-        }
-        else {
-
-
-            var data = $("#edit-note-id").serializeArray()
-
-            $.ajax({
-                url: '@Url.Action("EditNote", "Note")',
-                type: 'POST',
-                cache: false,
-                data: data,
-                success: function () { window.location.href = '/Note/Index'; }
-            });
-        }
-    }
-</script>

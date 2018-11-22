@@ -34,12 +34,7 @@ namespace IH.IhudBlog.Core.Models
         public virtual bool FileStatus { get; set; }
     }
 
-    //public static List<File> LoadFiles(long NoteId)
-    //{
-    //    NHFileRepository NHFileRepository = new IH.IhudBlog.Core.NHibernate.NHFileRepository();
-    //    List<File> Files = NHFileRepository.LoadByNote(NoteId);
-    //    return Files;
-    //}
+   
 
 }
 

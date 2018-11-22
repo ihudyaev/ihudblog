@@ -105,15 +105,16 @@ namespace IH.IhudBlog.Web.Controllers
 
         // GET: Note
         [HttpPost]
-        public ActionResult EditNote(NoteViewModel model)//, IEnumerable<HttpPostedFileBase> files)
+        public ActionResult EditNote(NoteViewModel model, IEnumerable<HttpPostedFileBase> files)//, IEnumerable<HttpPostedFileBase> files)
         {
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Проверьте, что заполнены все поля! 😊");
-                return PartialView(model);
+                return View("Index");
             }
 
-            var UserRepository = new IH.IhudBlog.Core.NHibernate.NHUserRepository();
+            
+            var UserRepository = new NHUserRepository();
 
             User UserNote = UserRepository.LoadById(model.UserId);
 
@@ -128,7 +129,33 @@ namespace IH.IhudBlog.Web.Controllers
             {
                 model.Id = NoteRepository.Create().Id;
             }
+
+            SaveNote = NoteViewModel.Conversion(model);
+
             
+            if(files != null)
+            {
+                List<File> savefiles = new List<File>();
+                NHFileRepository FileRepository = new NHFileRepository();
+                File tempFile = new File();
+                foreach (var file in files)
+                {
+                    if (file != null)
+                    {
+                        tempFile = NoteViewModel.FileConversion(file, (long)model.Id);
+                        tempFile.Id = FileRepository.Create().Id;
+                        tempFile.Note = SaveNote;
+                        savefiles.Add(tempFile);
+
+                        // сохраняем файл в папку Files в проекте
+                        file.SaveAs(Server.MapPath("~/Files/" + tempFile.GuidName));
+                        FileRepository.Save(tempFile);
+                    }
+                }
+            }
+            
+
+
             SaveNote = NoteViewModel.Conversion(model);
 
             NoteRepository.Save(SaveNote);
@@ -143,7 +170,7 @@ namespace IH.IhudBlog.Web.Controllers
                 modelList.Add(new NoteListModel(note));
             }
 
-            //return RedirectToAction("Index");
+            
             return View("Index", modelList);
 
         }
@@ -151,12 +178,12 @@ namespace IH.IhudBlog.Web.Controllers
         [HttpGet]
         public ActionResult DeleteNote(int noteid)
         {
-            //return View(StartData.Notes);
+            
             Note note = NoteRepository.LoadById(noteid);
             NoteViewModel model = new NoteViewModel(note);
 
             return PartialView(model);
-            //return PartialView(new NoteViewModel ());
+            
 
         }
 

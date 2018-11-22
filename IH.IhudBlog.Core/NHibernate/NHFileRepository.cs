@@ -28,19 +28,6 @@ namespace IH.IhudBlog.Core.NHibernate
             return entity;
         }
 
-        //public File LoadById(long FileId)
-        //{
-        //    var session = NHibernateHelper.GetCurrentSession();
-
-        //    var entity = session.F<File>()
-        //        .And(u => u.Id == FileId)
-        //        .List();
-
-        //    NHibernateHelper.CloseSession();
-
-        //    return entity;
-        //}
-
     }
 
 }

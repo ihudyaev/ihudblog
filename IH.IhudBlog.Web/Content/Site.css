@@ -37,9 +37,15 @@
 }
 
 .spanblock {
-    display:block
+    display:block;
 }
 
+.spanline {
+    display: inline;
+    white-space: nowrap;
+        
+        
+}
 
 
 /* Set width on the form input elements since they're 100% wide by default */

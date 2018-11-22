@@ -25,6 +25,9 @@ namespace IH.IhudBlog.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                      "~/Scripts/Studycourse.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                    "~/Scripts/ihudblog.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

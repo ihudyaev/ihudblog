@@ -77,7 +77,7 @@ namespace IH.IhudBlog.Web.Models
         /// 
         [Display(Name = "Пользователь")]
         public User User { get; set; }
-        
+
 
 
         public NoteViewModel()
@@ -142,6 +142,22 @@ namespace IH.IhudBlog.Web.Models
                 
             };
             
+            return result;
+        }
+
+        public static File FileConversion(HttpPostedFileBase file, long noteId)
+        {
+            
+            File result = new File
+            {
+                Id = -1,
+                FileN = file.FileName,
+                GuidName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(file.FileName),
+                Note = new Note(),
+                FileStatus = true
+
+            };
+
             return result;
         }
 
