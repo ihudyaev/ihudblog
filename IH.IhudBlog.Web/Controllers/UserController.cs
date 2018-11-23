@@ -74,6 +74,7 @@ namespace IH.IhudBlog.Web.Controllers
         [HttpGet]
         public ActionResult EditUser(long userid)
         {
+            //если передаем Id -1, то значит новая запись
             if (userid == -1)
             {
                 UserViewModel userT = new UserViewModel();

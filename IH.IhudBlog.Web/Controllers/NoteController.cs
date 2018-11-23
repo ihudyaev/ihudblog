@@ -24,6 +24,7 @@ namespace IH.IhudBlog.Web.Controllers
         // GET: Note
         public ActionResult Index(string sortOrder, string searchString)
         {
+            //параметры сортировки
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "UserName_desc" : "";
             ViewBag.DateSortParm = sortOrder == "ChangeTime" ? "ChangeTime_desc" : "ChangeTime";
             ViewBag.TitleSortParam = sortOrder == "Title" ? "Title_desc" : "Title";
@@ -67,8 +68,8 @@ namespace IH.IhudBlog.Web.Controllers
                     break;
             }
 
-            
 
+            //Получаем модель для отображения списка
             List<NoteListModel> model = new List<NoteListModel>();
             
 
@@ -85,7 +86,8 @@ namespace IH.IhudBlog.Web.Controllers
         [HttpGet]
         public ActionResult EditNote(long noteid)
         {
-            if(noteid == -1)
+            //если передаем Id -1, то значит новая запись
+            if (noteid == -1)
             {
                 NoteViewModel noteT = new NoteViewModel();
                 return PartialView(noteT);
@@ -115,7 +117,9 @@ namespace IH.IhudBlog.Web.Controllers
 
             var UserRepository = new NHUserRepository();
             User UserNote = new User();
-            
+
+
+            //если передаем Id -1, то значит новая запись
             if (model.Id == null || model.Id == -1)
             {
                 model.Id = NoteRepository.Create().Id;
@@ -252,22 +256,8 @@ namespace IH.IhudBlog.Web.Controllers
 
         }
 
-        //public ActionResult NoteList()
-        //{
-            
 
-            
-        //    IEnumerable<Note> all = NoteRepository.GetAllValid();
-        //    List<NoteViewModel> model = new List<NoteViewModel>();
-        //    foreach (Note note in all)
-        //    {
-        //        model.Add(new NoteViewModel(note));
-        //    }
-        //    return View(model);
-
-        //}
-
-        //Скасиваем файлы по ссылке 
+        //Метод для Скачивания файлов по ссылке 
         public ActionResult DownloadFile(string fileid)
         {
 
