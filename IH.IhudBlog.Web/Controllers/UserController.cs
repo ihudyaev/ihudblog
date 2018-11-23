@@ -23,7 +23,7 @@ namespace IH.IhudBlog.Web.Controllers
         {
             ViewBag.LoginSortParm = String.IsNullOrEmpty(sortOrder) ? "Login_desc" : "";
             ViewBag.BirthDateSortParm = sortOrder == "BirthDay" ? "BirthDay_desc" : "BirthDay";
-            ViewBag.EmailSortParam = sortOrder == "Email" ? "Email_desc" : "Title";
+            ViewBag.EmailSortParam = sortOrder == "Email" ? "Email_desc" : "Email";
 
 
             IEnumerable<User> all = UserRepository.GetAllValid();
