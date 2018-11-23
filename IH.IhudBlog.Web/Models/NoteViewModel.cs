@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 using IH.IhudBlog.Core.Models;
 using System.ComponentModel.DataAnnotations;
 using IH.IhudBlog.Core.NHibernate;
@@ -70,14 +68,20 @@ namespace IH.IhudBlog.Web.Models
         /// Ссылки на файлы
         /// </summary>
         [Display(Name = "Файлы")]
-        public List<File> Files { get; set; }
+        //public List<FileLight> NoteFiles { get; set; }
+        public List<File> NoteFiles { get; set; }
         /// <summary>
         /// Пользователь - владелец
         /// </summary>
         /// 
         [Display(Name = "Пользователь")]
         public User User { get; set; }
+        /// <summary>
+        /// Файлы для загрузки
+        /// </summary>
 
+        //[DataType(DataType.Upload)]
+        //public List<HttpPostedFileBase> FilesUpload { get; set; }
 
 
         public NoteViewModel()
@@ -86,9 +90,9 @@ namespace IH.IhudBlog.Web.Models
             this.ShortTitle = "";
             this.Title = "";
             this.Text = "";
-            this.User = null;//new User() { Login = "admin", Password = "admin", Id = 1 };//StartData.Users.FirstOrDefault(u => u.Id == note.UserId);
+            this.User = null;
             this.UserId = -1;
-            this.Tags = "";//.Split(new char[] {' '});
+            this.Tags = "";
             this.ChangeTime = DateTime.Now;
             this.CreationTime = DateTime.Now;
         }
@@ -108,15 +112,17 @@ namespace IH.IhudBlog.Web.Models
             this.CreationTime = note.CreationTime;
 
             NHFileRepository NHFileRepository = new IH.IhudBlog.Core.NHibernate.NHFileRepository();
+            
             List<File> Files = new List<File>();
-
+            
 
             foreach (File file in NHFileRepository.LoadByNote(note.Id))
             {
+                //tempFile = ConversionFileTypes(file);
                 Files.Add(file);
             }
 
-            this.Files = Files;
+            this.NoteFiles = Files;
 
         }
 
@@ -142,6 +148,22 @@ namespace IH.IhudBlog.Web.Models
                 
             };
             
+            return result;
+        }
+
+
+        public static FileLight ConversionFileTypes(File file)
+        {
+            
+            FileLight result = new FileLight
+            {
+                Id = (long)file.Id,
+                FileN = file.FileN,
+                FileStatus = file.FileStatus,
+                GuidName = file.GuidName,
+                NoteId = file.Note.Id
+            };
+
             return result;
         }
 

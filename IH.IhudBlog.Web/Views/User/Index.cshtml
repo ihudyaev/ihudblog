@@ -1,47 +1,116 @@
 ﻿@using IH.IhudBlog.Web.Models;
 @model List<UserViewModel>
 
+<h2>Пользователи</h2>
+<script>
 
 
-    <h2>Пользователи</h2>
 
+</script>
+
+<p>
+    @* Сделаем во всю ширину, чтобы легче было попасть *@
+    <div class="create-user superclass btn btn-default" onclick="location.href = '@Url.Action("EditUser",new { userid = -1 })'"> Создать пользователя </div>
+</p>
 
 <div class="container-fluid">
 
     <div class="row">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.ActionLink("Логин", "Index", new { sortOrder = ViewBag.TitleSortParam })
-                    </th>
-                    <th>
-                        @Html.ActionLink("Дата Рождения", "Index", new { sortOrder = ViewBag.NameSortParm })
-                    </th>
-                    <th>
-                        @Html.ActionLink("Почта", "Index", new { sortOrder = ViewBag.DraftSortParam })
-                    </th>
-                    <th></th>
-                </tr>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Логин", "Index", new { sortOrder = ViewBag.LoginSortParam })
+                </th>
+                <th>
+                    @Html.ActionLink("Дата Рождения", "Index", new { sortOrder = ViewBag.BirthDaySortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Почта", "Index", new { sortOrder = ViewBag.EmailSortParam })
+                </th>
+                <th></th>
+            </tr>
 
-                @foreach (var item in Model)
-                {
-                    <tr class="superclass note-list-item" data-noteid="@item.Id">
+            @foreach (var item in Model)
+            {
+            <tr class="user-list-item" data-userid="@item.Id">
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Login)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Birthday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                    </tr>
-                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <div class="edit-user superclass btn btn-default" onclick="location.href = '@Url.Action("EditUser",new { userid = item.Id })'"> Изменить </div>
+                </td>
+                <td>
+                    @if (HttpContext.Current.User.Identity.Name != item.Login)
+                    {
+                        <div class="delete-user superclass btn btn-default" onclick="location.href = '@Url.Action("DeleteUser",new { userid = item.Id })'"> Удалить </div>
+                    }
 
-            </table>
+                </td>
+            </tr>
+            }
 
-        </div>
-
+        </table>
 
     </div>
+
+
+</div>
+
+
+@section scripts
+{
+
+<script>
+
+        @*$('.user-list-item').click(function () {
+            var Id = this.dataset.userid;
+            $('.user-list-item').removeClass("highlighted");
+            $(this).addClass("highlighted");
+
+    $.ajax({
+
+        url: '@Url.Action("EditUser", "User")',
+        type:"GET",
+        dataType:  "html",
+        data: { userid: Id },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;*@
+
+
+    $('.create-user').click(function () {
+    var Id = this.dataset.noteid;
+    $.ajax({
+        url: '@Url.Action("EditUser", "User")',
+        type:"GET",
+        dataType:  "html",
+        data: { userid: -1 },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+        }).replaceAll;
+
+        $('.delete-user').click(function () {
+    var Id = this.dataset.noteid;
+    $.ajax({
+        url: '@Url.Action("EditUser", "User")',
+        type:"GET",
+        dataType:  "html",
+        data: { userid: -1 },
+        success: function (data) {
+            $('.show-text-part-view').html(data);
+        },
+            });
+                }).replaceAll;
+
+</script>        }

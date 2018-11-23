@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NHibernate;
 using IH.IhudBlog.Core.Models;
 using IH.IhudBlog.Core.Repository.Interface;
+using NHibernate.Criterion;
 
 namespace IH.IhudBlog.Core.NHibernate
 {
@@ -43,7 +44,21 @@ namespace IH.IhudBlog.Core.NHibernate
 
             return entity;
         }
-        
+
+        public IEnumerable<User> GetAllValid()
+        {
+            
+            ISession session = NHibernateHelper.GetCurrentSession();
+
+            var criteria = session.CreateCriteria<User>().Add(Expression.Eq("UserStatus", 1));
+
+            var entities = criteria.List<User>();
+
+            NHibernateHelper.CloseSession();
+
+            return entities;
+        }
+
     }
 
 }

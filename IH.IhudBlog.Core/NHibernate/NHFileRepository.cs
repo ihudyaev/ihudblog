@@ -20,7 +20,8 @@ namespace IH.IhudBlog.Core.NHibernate
             var session = NHibernateHelper.GetCurrentSession();
 
             var entity = session.QueryOver<File>()
-                .And(u => u.Note.Id == NoteId)
+                .And(f => f.Note.Id == NoteId)
+                .And(f => f.FileStatus == true)
                 .List();
 
             NHibernateHelper.CloseSession();

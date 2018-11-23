@@ -222,12 +222,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Note\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\doubles.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\strings.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\FilesUpload.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Files.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Note\ShowNote.cshtml" />
     <Content Include="Views\Note\EditNote.cshtml" />
     <Content Include="Views\Note\DeleteNote.cshtml" />
+    <Content Include="Views\User\EditUser.cshtml" />
+    <Content Include="Views\User\DeleteUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -253,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

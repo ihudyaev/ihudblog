@@ -132,12 +132,14 @@ namespace IH.IhudBlog.Web.Controllers
 
             SaveNote = NoteViewModel.Conversion(model);
 
-            
-            if(files != null)
+            List<File> savefiles = new List<File>();
+            NHFileRepository FileRepository = new NHFileRepository();
+            File tempFile = new File();
+
+            if (files != null)
             {
-                List<File> savefiles = new List<File>();
-                NHFileRepository FileRepository = new NHFileRepository();
-                File tempFile = new File();
+                
+                
                 foreach (var file in files)
                 {
                     if (file != null)
@@ -149,14 +151,35 @@ namespace IH.IhudBlog.Web.Controllers
 
                         // сохраняем файл в папку Files в проекте
                         file.SaveAs(Server.MapPath("~/Files/" + tempFile.GuidName));
-                        FileRepository.Save(tempFile);
                     }
                 }
             }
+
+
+            if (model.NoteFiles != null)
+            {
+                foreach (var file in model.NoteFiles)
+                {
+                    if (file != null)
+                    {
+                        file.Note = SaveNote;
+                        
+                        savefiles.Add(file);
+                        
+                    }
+                }
+            }
+
+            if(savefiles != null && savefiles.Count > 0 )
+            {
+                
+                foreach (File file in savefiles)
+                {
+                    FileRepository.Save(file);
+                }
+            }
             
-
-
-            SaveNote = NoteViewModel.Conversion(model);
+            
 
             NoteRepository.Save(SaveNote);
 
@@ -232,21 +255,22 @@ namespace IH.IhudBlog.Web.Controllers
 
         }
 
-        public ActionResult NoteList()
-        {
+        //public ActionResult NoteList()
+        //{
             
 
             
-            IEnumerable<Note> all = NoteRepository.GetAllValid();
-            List<NoteViewModel> model = new List<NoteViewModel>();
-            foreach (Note note in all)
-            {
-                model.Add(new NoteViewModel(note));
-            }
-            return View(model);
+        //    IEnumerable<Note> all = NoteRepository.GetAllValid();
+        //    List<NoteViewModel> model = new List<NoteViewModel>();
+        //    foreach (Note note in all)
+        //    {
+        //        model.Add(new NoteViewModel(note));
+        //    }
+        //    return View(model);
 
-        }
+        //}
 
+        //Скасиваем файлы по ссылке 
         public ActionResult DownloadFile(string fileid)
         {
 

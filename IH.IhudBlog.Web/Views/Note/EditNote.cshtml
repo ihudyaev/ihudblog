@@ -9,10 +9,14 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
 <script>
-    $(document).ready(function () {
+    
+    $('.glyphicon-remove').on('click', function () {
+            var Parent = $(this).parent();
+            Parent.hide();
+            var fileid = this.dataset.fileid;
 
-        $('#remove-file-old-glyph').on('click', function () {
-            $(this).parent().remove();
+            $('#NoteFiles_' + fileid + '__FileStatus').val(false);
+
         })
 
         $('#remove-file-glyph').on('click', function () {
@@ -22,12 +26,8 @@
 
         $('#add-file-glyph').on('click', function () {
             var FileListSelector = "#files-list";
-            var FileItemSelector = "#file-item ";
             $(FileListSelector).append('<div id=file-item > <input type="file" id="file" name="files" class="btn  btn-default"> </div>');
-            //var FilItemSelector = $(FileItemSelector).last();
-            //FilItemSelector.append('<input type="file" id="file" name="files" class="btn  btn-default">');
         })
-    })
 </script>
 
 
@@ -37,97 +37,103 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @if (Model.Id == null)
-        {
-            @Html.Hidden("Id", "-1")
-        }
-        else
-        {
-            @Html.Hidden("Id")
-        }
-        @Html.Hidden("CreationTime")
-        @Html.Hidden("ChangeTime")
-        @Html.Hidden("UserId")
+    @if (Model.Id == null)
+    {
+        @Html.Hidden("Id", "-1")
+    }
+    else
+    {
+        @Html.Hidden("Id")
+    }
+    @Html.Hidden("CreationTime")
+    @Html.Hidden("ChangeTime")
+    @Html.Hidden("UserId")
 
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", value = Model.Title } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", value = Model.Title } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsDraft, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDraft)
-                    @Html.ValidationMessageFor(model => model.IsDraft, "", new { @class = "text-danger", value = Model.IsDraft })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        
-
-        <div>
-            <div id="files-old-list">
-
-
-
-                @if (Model.Files != null)
-                {
-                    foreach (var file in Model.Files)
-                    {
-                        if (file != null)
-                        {
-                            <div id="file-item-old">
-                                <input type="file" id="file" name="files" class="btn  btn-default" value=@file.FileN>
-                                <span class="glyphicon glyphicon-remove btn" id="remove-file-old-glyph" />
-                            </div>
-                        }
-
-                    }
-                }
-
-                <hr />
-            </div>
-            <div id="files-list">
-                
-            </div>
-            <div id="file-add-remove-button" class="spanline">
-                <span class="glyphicon glyphicon-plus btn" id="add-file-glyph" />
-                <span class="glyphicon glyphicon-remove btn" id="remove-file-glyph" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-
-                <input type="submit" value="Принять" class="btn btn-default apply-button" />
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsDraft, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsDraft)
+                @Html.ValidationMessageFor(model => model.IsDraft, "", new { @class = "text-danger", value = Model.IsDraft })
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Text, new { @class = "form-control w-75 p-3" })
+            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div>
+        <div id="files-old-list">
+
+            @if (Model.NoteFiles != null)
+            {
+                <h4>Файлы:</h4>
+                int i = 0;
+                foreach (var file in Model.NoteFiles)
+                {
+                    if (file != null)
+                    {
+                        <div id="file-item-old" name="NoteFiles" class="panel panel-default">
+                            @Html.Hidden("NoteFiles[" + i + "].Id", file.Id)
+                            @Html.Hidden("NoteFiles[" + i + "].GuidName", file.GuidName)
+                            @Html.Hidden("NoteFiles[" + i + "].FileStatus", file.FileStatus)
+                            @Html.Hidden("NoteFiles[" + i + "].FileN", file.FileN)
+                            <span name="NoteFiles[" @i.ToString() ]".FileN" class="file-item btn-default btn-file superclass spanline" data-fileid=@file.Id> @file.FileN </span>
+                            <span class="glyphicon glyphicon-remove btn spanline" id="remove-file-old-glyph" data-fileid="@i" />
+                        </div>
+                        i = i + 1;
+                    }
+
+                }
+            }
+
+            <hr />
+        </div>
+        <div id="files-list">
+
+        </div>
+        <div id="file-add-remove-button" class="spanline">
+            <span class="glyphicon glyphicon-plus btn" id="add-file-glyph" />
+            <span class="glyphicon glyphicon-remove-new btn" id="remove-file-glyph" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+
+            <input type="submit" value="Принять" class="btn btn-default apply-button" />
+        </div>
+    </div>
+    @Html.ActionLink("Назад к списку", "Index")
+</div>
 }
 

@@ -41,10 +41,8 @@
 }
 
 .spanline {
-    display: inline;
-    white-space: nowrap;
-        
-        
+    display: inline-block;
+    white-space: nowrap;   
 }
 
 

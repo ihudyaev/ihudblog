@@ -55,10 +55,10 @@
 
 
 <div>
-    @if (Model.Files.Count > 0)
+    @if (Model.NoteFiles.Count > 0)
     {
         <hr />
-        foreach (var file in Model.Files)
+        foreach (var file in Model.NoteFiles)
         {
             <span class="file-item btn-default btn-file superclass spanblock" data-fileid=@file.Id> @file.FileN </span>
         }
