@@ -104,7 +104,7 @@ namespace IH.IhudBlog.Web.Controllers
             }
 
 
-            if (model.Id == null || model.Id == -1)
+            if (model.Id == -1)
             {
                 model.Id = UserRepository.Create().Id;
             }

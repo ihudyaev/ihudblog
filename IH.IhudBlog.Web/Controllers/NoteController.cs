@@ -113,22 +113,19 @@ namespace IH.IhudBlog.Web.Controllers
                 return View("Index");
             }
 
-            
             var UserRepository = new NHUserRepository();
+            User UserNote = new User();
+            
+            if (model.Id == null || model.Id == -1)
+            {
+                model.Id = NoteRepository.Create().Id;
+                
+            }
 
-            User UserNote = UserRepository.LoadById(model.UserId);
 
             model.User = UserNote;
 
             Note SaveNote = new Note();
-
-            
-            
-
-            if(model.Id == null || model.Id == -1)
-            {
-                model.Id = NoteRepository.Create().Id;
-            }
 
             SaveNote = NoteViewModel.Conversion(model);
 

@@ -132,6 +132,8 @@ namespace IH.IhudBlog.Web.Models
             //var StartData = Note.GetNotes();
             NHUserRepository NhuserRepository = new IH.IhudBlog.Core.NHibernate.NHUserRepository();
             User user = new User();
+
+
             user = NhuserRepository.LoadByName(HttpContext.Current.User.Identity.Name);
 
             Note result = new Note
